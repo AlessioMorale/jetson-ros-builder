@@ -1,0 +1,9 @@
+source /opt/ros/melodic/setup.bash
+cd /ros_catkin_ws
+
+echo import all rosinstalls 
+for i in *.rosinstall; do echo - $i && vcs import src < `echo $i`; done
+
+rosdep install --from-paths src --ignore-src --rosdistro melodic -y --skip-keys=libopencv-dev,libopencv,libopencv-core3
+catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release
+

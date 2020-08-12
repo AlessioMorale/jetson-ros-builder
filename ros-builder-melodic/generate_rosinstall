@@ -1,0 +1,12 @@
+case "$1" in
+    "")
+        echo usage:
+        echo $0 "<package list>" 
+        echo <package list> is a list of packages to be included into the rosinstall
+        exit 1;;
+    *)
+        package_list=$1
+        echo generating melodic-packages.rosinstall for \"${package_list}\"
+        rosinstall_generator ${package_list} --rosdistro melodic --deps --exclude RPP > melodic-packages.rosinstall
+        exit 0;;
+esac
