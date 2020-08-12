@@ -1,0 +1,128 @@
+- git:
+    local-name: find_object_2d
+    uri: https://github.com/introlab/find_object_2d-release.git
+    version: release/melodic/find_object_2d/0.6.2-1
+- git:
+    local-name: geometry2/tf2_eigen
+    uri: https://github.com/ros-gbp/geometry2-release.git
+    version: release/melodic/tf2_eigen/0.6.5-0
+- git:
+    local-name: geometry2/tf2_geometry_msgs
+    uri: https://github.com/ros-gbp/geometry2-release.git
+    version: release/melodic/tf2_geometry_msgs/0.6.5-0
+- git:
+    local-name: geometry2/tf2_sensor_msgs
+    uri: https://github.com/ros-gbp/geometry2-release.git
+    version: release/melodic/tf2_sensor_msgs/0.6.5-0
+- git:
+    local-name: image_common/image_transport
+    uri: https://github.com/ros-gbp/image_common-release.git
+    version: release/melodic/image_transport/1.11.13-0
+- git:
+    local-name: image_transport_plugins/compressed_depth_image_transport
+    uri: https://github.com/ros-gbp/image_transport_plugins-release.git
+    version: release/melodic/compressed_depth_image_transport/1.9.5-0
+- git:
+    local-name: image_transport_plugins/compressed_image_transport
+    uri: https://github.com/ros-gbp/image_transport_plugins-release.git
+    version: release/melodic/compressed_image_transport/1.9.5-0
+- git:
+    local-name: interactive_markers
+    uri: https://github.com/ros-gbp/interactive_markers-release.git
+    version: release/melodic/interactive_markers/1.11.5-1
+- git:
+    local-name: laser_geometry
+    uri: https://github.com/ros-gbp/laser_geometry-release.git
+    version: release/melodic/laser_geometry/1.6.5-1
+- git:
+    local-name: libg2o
+    uri: https://github.com/ros-gbp/libg2o-release.git
+    version: release/melodic/libg2o/2018.3.25-0
+- git:
+    local-name: media_export
+    uri: https://github.com/ros-gbp/media_export-release.git
+    version: release/melodic/media_export/0.3.0-1
+- git:
+    local-name: navigation/costmap_2d
+    uri: https://github.com/ros-gbp/navigation-release.git
+    version: release/melodic/costmap_2d/1.16.6-1
+- git:
+    local-name: navigation/map_server
+    uri: https://github.com/ros-gbp/navigation-release.git
+    version: release/melodic/map_server/1.16.6-1
+- git:
+    local-name: navigation/voxel_grid
+    uri: https://github.com/ros-gbp/navigation-release.git
+    version: release/melodic/voxel_grid/1.16.6-1
+- git:
+    local-name: navigation_msgs/map_msgs
+    uri: https://github.com/ros-gbp/navigation_msgs-release.git
+    version: release/melodic/map_msgs/1.13.0-0
+- git:
+    local-name: navigation_msgs/move_base_msgs
+    uri: https://github.com/ros-gbp/navigation_msgs-release.git
+    version: release/melodic/move_base_msgs/1.13.0-0
+- git:
+    local-name: octomap/octomap
+    uri: https://github.com/ros-gbp/octomap-release.git
+    version: release/melodic/octomap/1.9.0-1
+- git:
+    local-name: octomap_msgs
+    uri: https://github.com/ros-gbp/octomap_msgs-release.git
+    version: release/melodic/octomap_msgs/0.3.5-1
+- git:
+    local-name: pcl_msgs
+    uri: https://github.com/ros-gbp/pcl_msgs-release.git
+    version: release/melodic/pcl_msgs/0.2.0-0
+- git:
+    local-name: perception_pcl/pcl_conversions
+    uri: https://github.com/ros-gbp/perception_pcl-release.git
+    version: release/melodic/pcl_conversions/1.7.1-1
+- git:
+    local-name: perception_pcl/pcl_ros
+    uri: https://github.com/ros-gbp/perception_pcl-release.git
+    version: release/melodic/pcl_ros/1.7.1-1
+- git:
+    local-name: python_qt_binding
+    uri: https://github.com/ros-gbp/python_qt_binding-release.git
+    version: release/melodic/python_qt_binding/0.4.3-1
+- git:
+    local-name: qt_gui_core/qt_gui
+    uri: https://github.com/ros-gbp/qt_gui_core-release.git
+    version: release/melodic/qt_gui/0.4.2-1
+- git:
+    local-name: qt_gui_core/qt_gui_cpp
+    uri: https://github.com/ros-gbp/qt_gui_core-release.git
+    version: release/melodic/qt_gui_cpp/0.4.2-1
+- git:
+    local-name: resource_retriever
+    uri: https://github.com/ros-gbp/resource_retriever-release.git
+    version: release/melodic/resource_retriever/1.12.6-1
+- git:
+    local-name: rtabmap
+    uri: https://github.com/introlab/rtabmap-release.git
+    version: release/melodic/rtabmap/0.20.0-2
+- git:
+    local-name: rtabmap_ros
+    uri: https://github.com/introlab/rtabmap_ros-release.git
+    version: release/melodic/rtabmap_ros/0.20.0-1
+- git:
+    local-name: rviz
+    uri: https://github.com/ros-gbp/rviz-release.git
+    version: release/melodic/rviz/1.13.13-1
+- git:
+    local-name: vision_opencv/cv_bridge
+    uri: https://github.com/ros-gbp/vision_opencv-release.git
+    version: release/noetic/cv_bridge
+- git:
+    local-name: vision_opencv/image_geometry
+    uri: https://github.com/ros-gbp/vision_opencv-release.git
+    version: release/noetic/image_geometry
+- git:
+    local-name: librealsense
+    uri: https://github.com/AlessioMorale/librealsense.git
+    version: amorale/various_fixes
+- git:
+    local-name: realsense
+    uri: https://github.com/intel-ros/realsense.git
+    version: 1.8.1
