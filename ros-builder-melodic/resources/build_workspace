@@ -1,0 +1,15 @@
+source /opt/ros/melodic/setup.bash
+cd /ros_catkin_ws
+
+echo import all rosinstalls
+for i in *.rosinstall; do echo - $i && vcs import src < `echo $i`; done
+
+# prebuild can be used to apply any patch that may be needed to build the sources just downloaded
+
+if [[ -x ./prebuild ]]; then source ./prebuild; fi
+rosdep install --from-paths src --ignore-src --rosdistro melodic -y --skip-keys=libopencv-dev,libopencv,libopencv-core3
+catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release
+
+# postbuild can be used to perform any activity needed after the workspace compilation
+if [[ -x ./postbuild ]]; then source ./postbuild; fi
+
