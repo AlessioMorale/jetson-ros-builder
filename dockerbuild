@@ -1,6 +1,6 @@
 #!/bin/bash
 sourceimage="mdegans/tegra-opencv:jp-r32.4.2-cv-4.3.0"
-git pull $sourceimage
+docker pull $sourceimage
 last_git_tag=$(git describe --tags --dirty=-d --abbrev=1 --first-parent)
 last_git_tag=${last_git_tag:-$(git describe --all --dirty=-d --abbrev=1 --first-parent)}
 docker_tag=alessiomorale/jetson-ros-melodic-builder-r32.4.2-cv-4.3.0-0:${last_git_tag}
