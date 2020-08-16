@@ -5,7 +5,7 @@ COPY resources/* /buildtools/
 ENV release_name=bionic
 
 # install tzdata avoiding interactive prompts
-RUN ln -fs /usr/share/zoneinfo/Europa/London /etc/localtime && \
+RUN ln -fs /usr/share/zoneinfo/Europe/London /etc/localtime && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install gnupg2 tzdata -y && \
     DEBIAN_FRONTEND=noninteractive dpkg-reconfigure --frontend noninteractive tzdata && \
@@ -24,6 +24,7 @@ RUN apt-get update && \
 # complete the ros installation
 RUN rosdep init && \
     rosdep update
+    
 
 # prepare the workspace folder
 RUN mkdir -p /ros_catkin_ws/src
