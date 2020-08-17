@@ -1,6 +1,12 @@
+image: docker:19.03.12
+
 before_script:
   - docker info
 
 build_image:
   script:
+    - ./utils/setup_emulation
     - cd ./ros-builder-melodic && ./dockerbuild
+    - ./dockerbuild
+    - docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
+    - ./dockerpush
