@@ -18,8 +18,8 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${release_name} main" > 
 # install the base environment and all build tools
 RUN apt-get update && \
     apt-get install build-essential git python3-pip python-pip cmake ros-melodic-robot -y && \
-    pip --no-cache-dir install -U rosdep rosinstall_generator vcstool rosinstall em catkin-tools && \
-    pip3 --no-cache-dir install scikit-build && pip3 --no-cache-dir install opencv-python  --install-option="-j6" && \
+    pip3 --no-cache-dir install scikit-build && pip3 --no-cache-dir install "opencv-python>=4.3,<4.4"  --install-option="-j3" && \
+    pip3 --no-cache-dir install -U rosdep rosinstall_generator vcstool rosinstall empy catkin-tools && \
     apt-get clean autoclean -y
 # complete the ros installation
 RUN rosdep init && \

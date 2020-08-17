@@ -18,7 +18,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         docker --version
-        ./setup_emulation
+        ./utils/setup_emulation
         docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
         ./dockerbuild
         ./dockerpush
