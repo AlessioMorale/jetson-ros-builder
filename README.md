@@ -27,4 +27,4 @@ To run interactively the builder image you can use the following sintax:
 docker run -it --rm --net=host --runtime nvidia -v -v <your_workspace_path>:/ros_catkin_ws -e DISPLAY=$DISPLAY alessiomorale/ros-builder-melodic-jp-r32.4.2-cv-4.3.0-0:0.2.0
 ```
 
-Images are based on [mdegans/tegra-opencv](https://github.com/mdegans/nano_build_opencv/tree/docker) 
+Images are based on [mdegans/l4t-base](https://github.com/mdegans/docker-tegra-ubuntu/tree/l4t-base)
