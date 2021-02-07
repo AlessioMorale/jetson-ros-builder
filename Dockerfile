@@ -14,7 +14,6 @@ RUN apt-get update && \
     apt-get clean autoclean -y
 
 RUN pip3 --no-cache-dir install -U setuptools
-RUN pip --no-cache-dir install -U rosdep rosinstall_generator vcstool rosinstall empy catkin-tools
 RUN pip3 --no-cache-dir install -U rosdep rosinstall_generator vcstool rosinstall empy catkin-tools
 
 # complete the ros installation
