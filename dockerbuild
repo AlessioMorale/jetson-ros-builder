@@ -2,5 +2,4 @@
 source ./environment
 docker pull $sourceimage
 echo building $docker_tag
-docker build -t $docker_tag -t $docker_latest \
-    --build-arg sourceimage=$sourceimage .
+docker build -t $docker_tag -t $docker_latest .
