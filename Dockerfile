@@ -19,7 +19,7 @@ RUN pip3 --no-cache-dir install -U rosdep rosinstall_generator vcstool rosinstal
 # add exclusions for opencv*
 COPY /resources/opencv_overrides.yaml /etc/ros/rosdep/
 RUN mkdir -p /etc/ros/rosdep/sources.list.d/ && \
-    echo "yaml file:///etc/ros/rosdep/opencv_overrides.yaml" >> /etc/ros/rosdep/sources.list.d/5-default.list
+    echo "yaml file:///etc/ros/rosdep/opencv_overrides.yaml" >> /etc/ros/rosdep/sources.list.d/05-default.list
 
 # complete the ros installation
 RUN rosdep init && \
