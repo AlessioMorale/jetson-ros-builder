@@ -1,4 +1,4 @@
-image: docker:20.10.22
+image: docker:23.0.4
 
 before_script:
   - docker info
