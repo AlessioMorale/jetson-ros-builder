@@ -1,0 +1,88 @@
+#!/bin/bash
+archive_folder=${CCACHE_ROOT_FOLDER:-"/ccache"}/ccache_archives
+ccachedir=${CCACHE_ROOT_FOLDER:-"/ccache"}/ccache
+CCACHE_DIR=${ccachedir}
+
+if [ -n "$CACHE_GIT_URL" ]; then
+
+cat << EOT > /etc/ccache.conf
+# Set maximum cache size and location:
+max_size = 768M
+cache_dir = ${ccachedir}
+EOT
+
+mkdir -p "${ccachedir}"
+
+function prepare_git_clone {
+    git clone --depth 1 "${CACHE_GIT_URL}" -b "${CACHE_BRANCH}" "${archive_folder}"
+    cd "${archive_folder}"
+    git config user.email none@buildsandbox
+    git config user.name "CI"
+}
+
+function upload_cache {
+    pushd /
+
+    [ ! -d ${archive_folder} ] && prepare_git_clone
+    cd "${archive_folder}"
+
+    # save a backup copy of the previous run
+    git push origin "${CACHE_BRANCH}":"${CACHE_BRANCH}_prev" -f
+
+    ccache -s | tee "${archive_folder}/after_stats.txt"
+
+    rm ${CACHE_ARCHIVE}*
+
+    tar --owner=0 --group=0 -czSf - --directory=${ccachedir}/.. ccache | split --bytes 49M - "${archive_folder}/${CACHE_ARCHIVE}".
+
+    echo uploading
+    git add .
+    git commit --amend -m "update data"
+    git push origin "${CACHE_BRANCH}":"${CACHE_BRANCH}" -f
+    popd
+}
+
+function download_cache {
+    pushd /root
+    [ -d ${archive_folder} ] && rm -rf ${archive_folder}
+    prepare_git_clone
+
+    echo ${ccachedir}
+    mkdir -p ${ccachedir}
+    if [ -f "${archive_folder}/${CACHE_ARCHIVE}.aa" ]; then
+        echo expand the cache content
+        rm -rf ${ccachedir}/* 
+        cd ${ccachedir}/..
+        cat "${archive_folder}/${CACHE_ARCHIVE}."* | tar xzf -
+        [ -f "${ccachedir}/ccache.conf" ] && rm ${ccachedir}/ccache.conf
+    fi
+    ccache -s | tee "${archive_folder}/before_stats.txt"
+    popd
+}
+
+function remove_cache {
+    rm -rf ${ccachedir:?}/* || true
+    rm -rf "${archive_folder}" || true
+}
+
+/usr/sbin/update-ccache-symlinks
+export PATH="/usr/lib/ccache:$PATH"
+[ -e "/usr/lib/ccache/nvcc" ] && rm "/usr/lib/ccache/nvcc"
+ln -s $(which ccache) /usr/lib/ccache/nvcc
+
+else
+
+echo No CACHE_GIT_URL set. Disabling cache
+function upload_cache {
+    echo Cache disabled, not uploading cache.
+}
+
+function download_cache {
+    echo Cache disabled, not downloading cache.
+}
+
+function remove_cache {
+    echo Cache disabled, not removing cache.
+}
+
+fi

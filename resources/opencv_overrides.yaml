@@ -1,6 +1,6 @@
-opencv: {ubuntu: []}
-libopencv-contrib-dev: {ubuntu: []}
-libopencv-dev: {ubuntu: []}
-libopencv-imgproc-dev: {ubuntu: []}
-python-opencv: {ubuntu: []}
-python3-opencv: {ubuntu: []}
+# opencv: {ubuntu: []}
+# libopencv-contrib-dev: {ubuntu: []}
+# libopencv-dev: {ubuntu: []}
+# libopencv-imgproc-dev: {ubuntu: []}
+# python-opencv: {ubuntu: []}
+# python3-opencv: {ubuntu: []}

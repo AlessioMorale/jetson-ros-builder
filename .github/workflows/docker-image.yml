@@ -13,24 +13,21 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - id: semver_step
-      uses: paulhatch/semantic-version@v5.0.3
-      with:
-        # The prefix to use to identify tags
-        branch: "master"
-        tag_prefix: ""
-        format: "${major}.${minor}.${patch}-prerelease.${increment}"
-        change_path: "."
-        short_tags: true
-        # If this is set to true, *every* commit will be treated as a new version.
-        bump_each_commit: true
+    - name: Version tagging dry run
+      id: taggerDryRun 
+      uses: anothrNick/github-tag-action@1.67.0 # Don't use @master or @v1 unless you're happy to test the latest version
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if you don't want to set write permissions use a PAT token
+        WITH_V: false
+        DRY_RUN: true
+
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
     - name: Build the Docker image
       env:
-        image_version: ${{ steps.semver_step.outputs.version_tag }}
+        image_version: ${{ steps.taggerDryRun.outputs.new_tag }}
       run: |
         echo ${image_version}
         cd $GITHUB_WORKSPACE
@@ -39,3 +36,9 @@ jobs:
         ./dockerbuild
         ./dockerpush
         
+    - name: Tag successful build
+      id: taggerFinal
+      uses: anothrNick/github-tag-action@1.67.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        WITH_V: true
